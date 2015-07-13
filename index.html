@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- wave -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.6/p5.min.js"></script>
+<script src="js/wave.js"></script>
+<!-- ui -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script src="js/ui.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<h1>OSC</h1>
+<section>
+  <h2>Type:<span class="textbox" id="panelType">sin</span></h2>
+  <label for="option-1"><input type="radio" id="option-1" class="mdl-radio__button" name="wavetype" value="sin" checked />sin</label>
+  <label for="option-2"><input type="radio" id="option-2" class="mdl-radio__button" name="wavetype" value="saw" />saw</label>
+  <label for="option-3"><input type="radio" id="option-3" class="mdl-radio__button" name="wavetype" value="squ" />squ</label>
+  <label for="option-4"><input type="radio" id="option-4" class="mdl-radio__button" name="wavetype" value="tri" />tri</label>
+</section>
+<section>
+  <h2>Frequency:<input type="text" id="panelFrequency" class="textbox" value="10"></h2>
+  <div id="sliderFrequency"></div>
+</section>
+<section>
+  <h2>Volume:<input type="text" id="panelVolume" class="textbox" value="50"></h2>
+  <div id="sliderVolume"></div>
+</section>
+<section>
+  <h2>Phase:<input type="text" id="panelPhase" class="textbox" value="0"></h2>
+  <div id="sliderPhase"></div>
+</section>
+</body>
+</html>
