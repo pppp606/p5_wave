@@ -4,8 +4,16 @@ var wave = {
     volume:50,//ボリューム
     phase:0,//初期位相
     diff:0,//1サンプルで移動する位相量
+<<<<<<< HEAD
     type:"sin"//波形タイプ(sin,saw,squ,tri)
   },
+=======
+    type:"sin",//波形タイプ(sin,saw,squ,tri)
+    sample:0,//サンプリングレート
+    multiple:4//オーバーサンプリングの倍数
+  },
+  buffer:[],
+>>>>>>> master
   getY:function(){
     var y;
     this.Set.phase += this.Set.diff;
@@ -34,6 +42,11 @@ var wave = {
 
 function setup() {
   createCanvas(800, 120);
+<<<<<<< HEAD
+=======
+  //サンプリングレートを設定
+  wave.Set.sample = width * wave.Set.multiple;
+>>>>>>> master
 }
 
 function draw() {
@@ -46,6 +59,7 @@ function draw() {
   // スタート時点のy座標
   var lastpoints = wave.getY();
   //周波数でサンプリング数で割る
+<<<<<<< HEAD
   wave.Set.diff = TWO_PI * wave.Set.frequency / width;
   //サンプル（横幅）分繰り返す
   for (var i = 1; i < width; i++) {
@@ -53,5 +67,28 @@ function draw() {
     //波形描画
     line(i-1,lastpoints,i,y);
     lastpoints = y;
+=======
+  wave.Set.diff = TWO_PI * wave.Set.frequency / wave.Set.sample;
+  var i = 1;
+  while (i < wave.Set.sample) {
+    var y = wave.getY();
+    var s = i % wave.Set.multiple;
+    wave.buffer[s] = y;
+    if(s == 0){
+      //平均値を求める
+      var j = 0;
+      var sum = 0;
+      while (j<wave.Set.multiple) {
+        sum = sum + wave.buffer[j];
+        j = (j +1) | 0;
+      }
+      y = sum / wave.Set.multiple;
+      //波形描画
+      line(i/wave.Set.multiple-1,lastpoints,i/wave.Set.multiple,y);
+      lastpoints = y;
+    }
+
+    i = (i + 1)|0;
+>>>>>>> master
   }
 }
